@@ -89,7 +89,7 @@ Form component is used to create a contact form to let our users reach out to us
 
 
 ### Email
-This component we doesn't need any setup but, couldn't be easier than that ;)
+This component doesn't need any setup, couldn't be easier than that ;)
 
 
 ### Mailchimp (optional)
