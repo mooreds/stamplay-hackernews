@@ -89,7 +89,7 @@ Form component is used to create a contact form to let our users reach out to us
 
 
 ### Email
-This component we doesn't need any setup but, couldn't be easier than that ;)
+This component doesn't need any setup, couldn't be easier than that ;)
 
 
 ### Mailchimp (optional)
@@ -237,7 +237,6 @@ Then you need to upload the frontend files in your app and you can do it in two 
 Here are a few ideas for further improvement :
 
 * Use [Pusher](http://pusher.com) component to send realtime notification when a new post is created
-* PushState support
 * _Your idea here… ?_
 
 Again, for any questions drop an email to [giuliano.iacobelli@stamplay.com](mailto:giuliano.iacobelli@stamplay.com) :)
