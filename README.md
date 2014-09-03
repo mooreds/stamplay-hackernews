@@ -31,11 +31,12 @@ Best of all, it has no server code it has barely some Javascript line. Prepare t
 
 HNclone is built around the following apis (components) of Stamplay
 
-* [Users](http://docs.stamplay.apiary.io/#user)
-* [Form](http://docs.stamplay.apiary.io/#form)
-* [Gamification](http://docs.stamplay.apiary.io/#challenge)
-* [Custom Objects](http://docs.stamplay.apiary.io/#customobject)
-* [Email](http://docs.stamplay.apiary.io/#email)
+* [Users](https://stamplay.com/docs#user)
+* [Form](https://stamplay.com/docs#form)
+* [Gamification](https://stamplay.com/docs#challenge)
+* [Custom Objects](https://stamplay.com/docs#customobject)
+* [Email](https://stamplay.com/docs#email)
+* [Mailchimp](http://mailchimp.com)
 
 
 ## Requirements
@@ -49,7 +50,7 @@ Other required services :
 Optional services :
 
 * [Google Analytics](http://google.com/analytics)
-
+* [Mailchimp](http://mailchimp.com)
 
 ## Configuring the components
 
@@ -76,6 +77,8 @@ After setting up this Stamplay will instantly expose Restful APIs for our newly 
 ### Gamification
 User activity on Hacker News is rewarded with Karma points, this component empower you to add gamification mechanics by defining challenges and achievements in your app. In this way we will be able to assign points to our users as soon as they post or comment new Posts on our Hacker News clone without having to write a single server side line of code.
 
+Gamification's challenges can have one or more level that are unlocked when the user earns enough points. Every level has a graphic representation for both locked and unlocked state. Here we can see our one and only "superguru" level for the karma point challenge that user will unlock after they earn 900 points.
+
 ![Gamification settings](http://blog.stamplay.com/wp-content/uploads/2014/07/Schermata-2014-07-22-alle-19.49.13.png)
 
 
@@ -84,23 +87,130 @@ Form component is used to create a contact form to let our users reach out to us
 
 ![Form settings](http://blog.stamplay.com/wp-content/uploads/2014/07/Schermata-2014-07-22-alle-20.14.38.png)
 
+
 ### Email
 This component we doesn't need any setup but, couldn't be easier than that ;)
 
 
+### Mailchimp (optional)
+To push email addresses of app's users to a Mailchimp list you only need to connect your account. Just click the "Connect" button and authorize Stamplay in interacting with your Mailchimp data.
 
-## Creating the Tasks
+
+-----------------------
 
 
+## Creating the server side logic with Tasks
+
+Now let's add the tasks that will define the server side of our app. For our app we want that:
+
+###When a new user signup, we send him a welcome email
+Trigger : User - On Signup
+
+Action: Email - Send Email
+
+**Send Email configuration**
+
+	to: {{user.email}}  // this will be automatically replaced with user's email
+	from: "welcome@stamplaynews.com"
+	name: "Stamplay HN"
+	Subject: "Welcome!"
+	Body: "Hi {{user.displayName}}! Welcome to this clone of Hacker News built with <a href="http://stamplay.com">Stamplay</a>"
+
+
+###When a new user signup, he automatically join the karma points challenge
+Trigger : User - On Signup
+
+Action: Gamification - Join Challenge
+
+**Join Challenge configuration**
+
+	challenge: hnkarma
+
+###When a user publish a new post, he earns 10 points
+Trigger : Custom Object - Create (new object created)
+
+Action: Gamification - Add Points
+
+
+**Create configuration**
+
+	custom object: post 
+
+**Add Points configuration**
+
+	challenge: hnkarma
+	points: 10
+
+
+###When a user fills the contact form, we receive an email with the form's content
+
+Trigger : Form - Submit
+
+Action: Email - Send Email
+
+**Form submit configuration**
+
+	Form: contact
+
+**Send Email configuration**
+
+	to: address@email.com
+	from: {{entry.data.email}}
+	name: {{entry.data.email}}
+	Subject: "New Message from Hacker News clone"
+	Body: {{entry.data.message}}
+
+
+###When a new user signup, adds him on a Mailchimp list (optional)
+Trigger : User - On Signup
+
+Action: Mailchimp - Subscribe to a List
+
+**Subscribe to a List configuration**
+
+	list: [your list name]
+	email: {{user.email}}	
+
+
+
+This should be the final result of the configured tasks
+
+
+![Task overview](http://blog.stamplay.com/wp-content/uploads/2014/07/Schermata-2014-07-22-alle-22.28.44.png)
+
+
+_______________________________
 
 
 ## Building the frontend
 
-### /index
-### /newest
-### /submit
-### /item
-### /contact
+###Pages
+
+Time to move to the frontend, everything happens in few pages with the following scopes:
+
+##### /index
+The home page where users can see all the post published sorted by upvotes received, and logged users can vote the best ones.
+
+##### /newest
+A page where you can see all the post published sorted by date, most recent first.
+
+##### /submit
+A page to submit the a new post
+
+##### /item
+A page to see the detail of a post, read and post comments
+
+##### /contact
+A page that contains the contact form to let our users reach out to us without leaving the website.
+
+
+When working with the frontend you can leverage Handlebars syntax to include recurring pieces of HTML (like an header or a footer). Navigating thourgh the code it's see how it's structured. There is always a main layout file that embeds the body of the page, then the single pages like *index* or  *newest* include header and footer of this app.
+
+###Assets
+
+Assets is the folder where you can store all the static content of your app, you can always easily reach out to your static files base root using ```{{assetsUrl}/assets``` in your HTML.
+
+In **main.js** you can find the frontend logic written with few lines of javascript and using jQuery.
 
 
 
@@ -130,4 +240,6 @@ Here are a few ideas for further improvement :
 * PushState support
 * _Your idea here… ?_
 
+Again, for any questions drop an email to [giuliano.iacobelli@stamplay.com](mailto:giuliano.iacobelli@stamplay.com) :)
 
+Ciao!
