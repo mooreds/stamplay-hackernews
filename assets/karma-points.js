@@ -13,9 +13,11 @@ app.directive('karmaPoints', ['userService', 'karmaService',
 			link: function (scope, element, attrs, sc) {
 				scope.user = userService.getUser();
 				// scope.$parent.listenOnUser(scope);
-				karmaService.getKarmaPoints().success(function (response) {
-					scope.points = response.points || '0';
-				})
+				if (scope.user) {
+					karmaService.getKarmaPoints(scope.user['_id']).success(function (response) {
+						scope.points = response.points || '0';
+					})
+				}
 			}
 		};
 }]);
