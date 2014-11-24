@@ -5,16 +5,17 @@
   <script src="{{assetsUrl}}/assets/jquery-1.11.js"></script>
   <title>STAMPLAY News</title>
 </head>
-<body>
+<body ng-app="app">
 
   {{{body}}}
 
   <script>
       var _APP_ID = "{{appId}}";
-      var _APP_DOMAIN = "{{baseUrl}}";
-  </script>   
-  <script src="{{assetsUrl}}/stamplay.js"></script>
-  <script src="{{assetsUrl}}/main.js"></script>
+      var _ASSETS_URL = "{{assetsUrl}}";
+  </script>  
+  <script src="{{assetsUrl}}/assets/stamplay-ng.min.js"></script>
+  <script src="{{assetsUrl}}/assets/karmaService.js"></script>
+  <script src="{{assetsUrl}}/assets/karma-points.js"></script>
   <script src="{{assetsUrl}}/assets/main.js"></script>
 </body>
 </html>

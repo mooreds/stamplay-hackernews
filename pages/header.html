@@ -21,7 +21,12 @@
                   </td>
                   <td style="text-align:right;padding-right:4px;">
                     <span class="pagetop">
-                        <div data-stamplay-widget="auth.login" data-channel="facebook" data-redirect="/"></div>                      
+                      {{#if user}}
+                        <stamplay karma-points></stamplay>
+                        <stamplay logout></stamplay>
+                      {{else}}
+                        <stamplay login-facebook></stamplay>
+                      {{/if}}
                     </span>
                   </td>
                 </tr>

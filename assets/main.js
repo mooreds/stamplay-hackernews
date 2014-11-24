@@ -108,14 +108,13 @@ $('body').on('click', 'a.voteelem', function(e) {
 
     $.ajax({
       url:'/api/cobject/v0/post/' + postid + '/vote',
-      method: 'PUT',
-      data: {
-        type: 'upvote'
-      }
+      method: 'PUT'
     }).success(function(resp,err){
+
       var score = $("#score_"+postid).data('score'); 
       score++;
       $("#score_"+postid).html( score + ' points' );
+      
     })  
 });
 
@@ -134,3 +133,9 @@ $('body').on('submit', '#submitcomment', function( e ) {
        }
     });        
 });
+
+
+
+
+
+
