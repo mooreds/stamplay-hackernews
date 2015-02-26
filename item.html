@@ -1,0 +1,110 @@
+<html>
+  <head>
+    <link rel="shortcut icon" href="./images/favicon32.png">
+    <link href="./css/news.css" rel="stylesheet">
+    <link href="./css/stamplay.css" rel="stylesheet">
+
+    <title>STAMPLAY News</title>
+  </head>
+
+  <body>
+
+    <center>
+      <table id="table-container">
+        <tbody>
+
+          <!-- HEADER -->
+          <tr>
+            <td class="row-blue">
+              <table id="table-internal">
+                <tbody>
+                  <tr>
+                    <td class="logo-container">
+                      <a href="https://stamplay.com">
+                        <img src="./images/img2.png" class="logo-img">
+                      </a>
+                    </td>
+                    <td style="line-height:12pt; height:10px;">
+                      <span class="pagetop"> <b><a href="/">Stamplay News</a></b>
+                          <a href="?newest=true" class="newest">newest</a>                        
+                          <a href="./submit.html" id="submit-button">submit</a>    
+                      </span>
+                    </td>
+                    <td style="text-align:right;padding-right:4px;">
+                      <span class="pagetop">
+                          <span id="user-info"></span>
+                          <span id="logout-btn"><a href="/auth/v0/logout">Logout</a></span>
+                          <span id="login-btn">
+                            <a href="https://hackernews.stamplayapp.com/auth/v0/facebook/connect">Login</a>
+                          </span>
+                      </span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+          <!-- END HEADER -->
+
+		      <tr style="height:10px"></tr>
+		      <tr>
+		        <td>
+		          <table border="0">
+		              <tbody id="postcontent">
+		                  
+		              </tbody>
+		          </table>
+		          <br><br>
+		          <table border="0">
+		              <tbody id="postcomments">
+		                  
+		              </tbody>    
+		          </table>
+		        </td>
+		    	</tr>
+
+
+		    	<!-- FOOTER -->
+ 					<tr>
+            <td>
+              <table width="100%" cellspacing="0" cellpadding="1">
+                <tbody>
+                  <tr>
+                      <td bgcolor="#414b82"></td>
+                  </tr>
+                </tbody>
+              </table>
+              <br>
+              <center>
+                <span class="yclinks">                
+                  <a href="?newest=true" class="newest">Newest</a>                
+                  |
+                  <a href="/contact.html">Contact</a>
+                  |
+                  <a href="https://stamplay.com" target="_blank">Stamplay</a>                
+                </span>
+                <br>
+                <br>
+                <form method="get" action="/search">
+                  Search: <input type="text" name="title" value="" placeholder="search by post title" size="25">                
+                </form>
+                <br></center>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+  </center>
+  
+  <script>
+    var _APP_ID = "hackernews";
+    var _ASSETS_URL = "";
+  </script>  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <!-- Stamplay JS SDK v0.0.5-->
+  <script src="//drrjhlchpvi7e.cloudfront.net/libs/stamplay-js-sdk/0.0.5/stamplay.min.js"></script>
+  <script src="./js/utils.js"></script>
+  <script src="./js/main.js"></script>
+
+  </body>
+
+</html>

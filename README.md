@@ -3,7 +3,7 @@ stamplay-hackernews
 
 **This project is built on the [Stamplay](https://stamplay.com) platform, with few lines of [jQuery](http://jquery.com) to show how to build your own clone of hacker news in tenth of minutes.**
 
-You can test it anytime simply creating a new project on Stamplay and uploading all the frontend assets with our client or our browser based code editor. 
+You can test it anytime simply creating a new project on Stamplay and uploading with our [CLI tool](https://github.com/Stamplay/stamplay-cli). 
 
 Feel free to implement more cool features (see the last paragraph for ideas), contribute to this repo or clone it to use it by your own scopes. For any question drop an email to [giuliano.iacobelli@stamplay.com](mailto:giuliano.iacobelli@stamplay.com)
 
@@ -12,9 +12,9 @@ Feel free to implement more cool features (see the last paragraph for ideas), co
 
 This is a demo of what you can achieve with [Stamplay](http://stamplay.com).
 
-It's somewhat of a clone of Hacker News. [View demo](https://68a5fe.stamplay.com/)
+It's somewhat of a clone of Hacker News. [View demo](https://hackernews.stamplayapp.com/)
 
-Currently, in order to show how to leverage Stamplay APIs and keep it simple we used few lines of [jQuery](http://jquery.com) to implement the client side logic.
+Currently, in order to show how to leverage Stamplay APIs and keep it simple we used our [javascript sdk] (https://github.com/Stamplay/stamplay-js-sdk) to implement the client side logic.
 
 * Login with Facebook
 * Publish a URL/Post
@@ -41,7 +41,7 @@ HNclone is built around the following apis (components) of Stamplay
 
 ## Requirements
 
-Go to [your account](http://editor.stamplay.com/apps) and create a new app.
+Go to [your account](https://editor.stamplay.com/apps) and create a new app.
 
 Other required services :
 
@@ -61,7 +61,7 @@ Lets see one-by-one how they are configured:
 ### User
 the app leverages Facebook Login to provide an easy login to its users. In order to activate yours you need to get an APPID and APPSecret on [Facebook Developer's portal](http://developers.facebook.com/apps), create an app and add Stamplay.com as authorized domain as you can see in the pic below. 
 
-![Facebook app settings](http://blog.stamplay.com/wp-content/uploads/2014/07/Schermata-2014-07-22-alle-17.43.24.png "Facebook app settings")
+![Facebook app settings](https://blog.stamplay.com/wp-content/uploads/2014/07/Schermata-2014-07-22-alle-17.43.24.png "Facebook app settings")
 
 now you have the data to configure Facebook Login on your app's user module. Go back on Stamplay, select the user component, add Facebook as signup service and then cut and paste the App ID and App Secret and click save.
 
@@ -71,7 +71,7 @@ For our Hacker News clone we use this module to represent the **Post** that user
 
 After setting up this Stamplay will instantly expose Restful APIs for our newly created Post resource on the following endpoint ```https://APPID.stamplay.com/api/cobject/v0/post```
 
-![Custom Object settings](http://blog.stamplay.com/wp-content/uploads/2014/07/Schermata-2014-07-22-alle-19.38.29.png)
+![Custom Object settings](https://blog.stamplay.com/wp-content/uploads/2014/07/Schermata-2014-07-22-alle-19.38.29.png)
 
 
 ### Gamification
@@ -79,13 +79,13 @@ User activity on Hacker News is rewarded with Karma points, this component empow
 
 Gamification's challenges can have one or more level that are unlocked when the user earns enough points. Every level has a graphic representation for both locked and unlocked state. Here we can see our one and only "superguru" level for the karma point challenge that user will unlock after they earn 900 points.
 
-![Gamification settings](http://blog.stamplay.com/wp-content/uploads/2014/07/Schermata-2014-07-22-alle-19.49.13.png)
+![Gamification settings](https://blog.stamplay.com/wp-content/uploads/2014/07/Schermata-2014-07-22-alle-19.49.13.png)
 
 
 ### Form
 Form component is used to create a contact form to let our users reach out to us without leaving the app. Our contact form will have two fields, *email* and *message*.
 
-![Form settings](http://blog.stamplay.com/wp-content/uploads/2014/07/Schermata-2014-07-22-alle-20.14.38.png)
+![Form settings](https://blog.stamplay.com/wp-content/uploads/2014/07/Schermata-2014-07-22-alle-20.14.38.png)
 
 
 ### Email
@@ -110,11 +110,12 @@ Action: Email - Send Email
 
 **Send Email configuration**
 
-	to: {{user.email}}  // this will be automatically replaced with user's email
-	from: "welcome@stamplaynews.com"
-	name: "Stamplay HN"
+	To: {{user.email}}  // this will be automatically replaced with user's email
+	From: "welcome@stamplaynews.com"
+	From name: "Stamplay HN"
 	Subject: "Welcome!"
 	Body: "Hi {{user.displayName}}! Welcome to this clone of Hacker News built with <a href="http://stamplay.com">Stamplay</a>"
+	
 
 
 ###When a new user signup, he automatically join the karma points challenge
@@ -156,7 +157,7 @@ Action: Email - Send Email
 
 	to: address@email.com
 	from: {{entry.data.email}}
-	name: {{entry.data.email}}
+	name: {{user.displayName}}
 	Subject: "New Message from Hacker News clone"
 	Body: {{entry.data.message}}
 
@@ -176,7 +177,7 @@ Action: Mailchimp - Subscribe to a List
 This should be the final result of the configured tasks
 
 
-![Task overview](http://blog.stamplay.com/wp-content/uploads/2014/07/Schermata-2014-07-22-alle-22.28.44.png)
+![Task overview](https://blog.stamplay.com/wp-content/uploads/2014/07/Schermata-2014-07-22-alle-22.28.44.png)
 
 
 _______________________________
@@ -188,11 +189,8 @@ _______________________________
 
 Time to move to the frontend, everything happens in few pages with the following scopes:
 
-##### /index
+##### /index.html
 The home page where users can see all the post published sorted by upvotes received, and logged users can vote the best ones.
-
-##### /newest
-A page where you can see all the post published sorted by date, most recent first.
 
 ##### /submit
 A page to submit the a new post
@@ -203,14 +201,9 @@ A page to see the detail of a post, read and post comments
 ##### /contact
 A page that contains the contact form to let our users reach out to us without leaving the website.
 
+###Client side logic 
 
-When working with the frontend you can leverage Handlebars syntax to include recurring pieces of HTML (like an header or a footer). Navigating thourgh the code it's see how it's structured. There is always a main layout file that embeds the body of the page, then the single pages like *index* or  *newest* include header and footer of this app.
-
-###Assets
-
-Assets is the folder where you can store all the static content of your app, you can always easily reach out to your static files base root using ```{{assetsUrl}/assets``` in your HTML.
-
-In **main.js** you can find the frontend logic written with few lines of javascript and using jQuery.
+In [main.js](https://github.com/Stamplay/stamplay-hackernews/blob/freeAssets/js/main.js) you can find the frontend logic written with few lines of javascript and using jQuery. In the [utils.js] (https://github.com/Stamplay/stamplay-hackernews/blob/freeAssets/js/utils.js) file there are some support methods for formatting dates and retrieving url parameters.
 
 
 
@@ -225,11 +218,16 @@ Or download it as a zip file
 	
 	https://github.com/Stamplay/stamplay-hackernews/archive/master.zip 
 
-Then you need to upload the frontend files in your app and you can do it in two ways:
+Then you need to upload the frontend files in your app by using the [CLI tool](https://github.com/Stamplay/stamplay-cli):
 
-* Copy/Upload them via the Layout section of your app on Stamplay editor
-* [Get](http://cdn.stamplay.com/stamplay-sync/stamplay-sync.zip) and run **Stamplay Sync**, make it download the frontend assets of your app and then replace them with the ones you got from this repo. Stamplay Sync will upload everything for you on your app.
-
+```js
+cd your/path/to/stamplay-hackenews
+stamplay init
+/*
+ * You will need to insert your appId and your API key
+ */
+stamplay deploy
+```
 
 -----------------------
 # Next steps
