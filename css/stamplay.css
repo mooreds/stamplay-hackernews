@@ -1,0 +1,38 @@
+#table-container{
+	border : 0px;
+	cellpadding : 0px; 
+	cellspacing : 0px; 
+	width : 85%; 
+	bgcolor : #f6f6ef;
+}
+
+#table-internal{
+	border : 0px;
+	cellpadding : 0;
+	cellspacing : 0;
+	width : 100%; 
+	padding : 2px;
+}
+
+.row-blue{
+	background-color: #414b82;
+}
+
+.logo-container{
+	width:18px;
+	padding-right:4px;
+}
+
+.logo-img{
+	width:18px;
+	height:18px;
+	border:1px #ffffff solid;
+}
+
+#submit-button{
+	display: none;
+}
+
+#logout-btn{
+	display: none;
+}
