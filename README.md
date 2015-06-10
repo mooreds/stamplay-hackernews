@@ -10,7 +10,7 @@ Feel free to implement more cool features (see the last paragraph for ideas), co
 -----------------------
 ## Hacker News clone
 
-This is a demo of what you can achieve with [Stamplay](http://stamplay.com).
+This is a demo of what you can achieve with [Stamplay](https://stamplay.com).
 
 It's somewhat of a clone of Hacker News. [View demo](https://hackernews.stamplayapp.com/)
 
@@ -32,11 +32,11 @@ Best of all, it has no server code it has barely some Javascript line. Prepare t
 HNclone is built around the following apis (components) of Stamplay
 
 * [Users](https://stamplay.com/docs#user)
-* [Form](https://stamplay.com/docs#form)
+* Form
 * [Gamification](https://stamplay.com/docs#challenge)
 * [Custom Objects](https://stamplay.com/docs#customobject)
 * [Email](https://stamplay.com/docs#email)
-* [Mailchimp](http://mailchimp.com)
+* Mailchimp
 
 
 ## Requirements
@@ -59,7 +59,7 @@ After creating a new app on [Stamplay](https://editor.stamplay.com) let's start 
 Lets see one-by-one how they are configured:
 
 ### User
-the app leverages Facebook Login to provide an easy login to its users. In order to activate yours you need to get an APPID and APPSecret on [Facebook Developer's portal](http://developers.facebook.com/apps), create an app and add Stamplay.com as authorized domain as you can see in the pic below. 
+The app leverages Facebook Login to provide an easy login to its users. In order to activate yours you need to get an APPID and APPSecret on [Facebook Developer's portal](http://developers.facebook.com/apps), create an app and add stamplayapp.com as authorized domain as you can see in the pic below. 
 
 ![Facebook app settings](https://blog.stamplay.com/wp-content/uploads/2014/07/Schermata-2014-07-22-alle-17.43.24.png "Facebook app settings")
 
@@ -69,7 +69,7 @@ now you have the data to configure Facebook Login on your app's user module. Go 
 ### Custom Object
 For our Hacker News clone we use this module to represent the **Post** that users can publish on Hacker news. Our posts will have a title, url, description and other two attributes as showed in the picture below. 
 
-After setting up this Stamplay will instantly expose Restful APIs for our newly created Post resource on the following endpoint ```https://APPID.stamplay.com/api/cobject/v0/post```
+After setting up this Stamplay will instantly expose Restful APIs for our newly created Post resource on the following endpoint ```https://APPID.stamplayapp.com/api/cobject/v0/post```
 
 ![Custom Object settings](https://blog.stamplay.com/wp-content/uploads/2014/07/Schermata-2014-07-22-alle-19.38.29.png)
 
@@ -114,7 +114,7 @@ Action: Email - Send Email
 	From: "welcome@stamplaynews.com"
 	From name: "Stamplay HN"
 	Subject: "Welcome!"
-	Body: "Hi {{user.displayName}}! Welcome to this clone of Hacker News built with <a href="http://stamplay.com">Stamplay</a>"
+	Body: "Hi {{user.displayName}}! Welcome to this clone of Hacker News built with <a href="https://stamplay.com">Stamplay</a>"
 	
 
 
