@@ -72,7 +72,7 @@ After setting up this Stamplay will instantly expose Restful APIs for our newly 
 
 ![Custom Object settings](https://blog.stamplay.com/wp-content/uploads/2014/07/Schermata-2014-07-22-alle-19.38.29.png)
 
-Moreover we'll use a ```contact``` custom object with email and message attributes as String.
+Moreover we'll use a ```contact``` custom object with ```email``` and ```message``` attributes as string.
 
 ### Gamification
 User activity on Hacker News is rewarded with Karma points, this component empower you to add gamification mechanics by defining challenges and achievements in your app. In this way we will be able to assign points to our users as soon as they post or comment new Posts on our Hacker News clone without having to write a single server side line of code.
