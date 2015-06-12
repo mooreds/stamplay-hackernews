@@ -4,6 +4,20 @@ var user = new Stamplay.User().Model;
 
 $(document).ready(function () {
 
+  $('#login').on('click', function (e) {
+    e.preventDefault();
+    user.login('facebook').then(function () {
+      return user.currentUser()
+    }).then(function () {
+      window.location.href = '/';
+    });
+  });
+
+  $('#logout').on('click', function (e) {
+    e.preventDefault();
+    user.logout();
+  })
+
   /* Checking if the user is logged */
   user.currentUser()
     .then(function () {
@@ -84,7 +98,7 @@ function getPostDetail() {
     $('#postcontent').append(tElem);
 
     post.get('actions').comments.forEach(function (comment) {
-      var comment = '<tr><td><table border="0"><tbody><tr><td><img src="s.gif" height="1" width="0"></td><td valign="top"><center><a href="#"><div class="votearrow" title="upvote"></div></a><span id="down_7904745"></span></center></td><td class="default"><div style="margin-top:2px; margin-bottom:-10px; "><span class="comhead"><a href="#">' + comment.displayName + '</a> ' + Utils.formatDate(comment.dt_create) + '</span>    </div><br><span class="comment"><font color="#000000">' + comment.text + '</font></span></td></tr></tbody></table></td></tr>'
+      var comment = '<tr><td><table border="0"><tbody><tr><td></td><td valign="top"><center><a href="#"><div class="" title="upvote"></div></a><span id="down_7904745"></span></center></td><td class="default"><div style="margin-top:2px; margin-bottom:-10px; "><span class="comhead"><a href="#">' + comment.displayName + '</a> ' + Utils.formatDate(comment.dt_create) + '</span>    </div><br><span class="comment"><font color="#000000">' + comment.text + '</font></span></td></tr></tbody></table></td></tr>'
       $('#postcomments').append(comment)
     })
 
@@ -140,14 +154,16 @@ $("#sendnews").submit(function (event) {
 
 $("#contactform").submit(function (event) {
   event.preventDefault();
-  var data = {};
-  data.userId = $("#contactform input[name='userId']").val();
-  data.email = $("#contactform input[name='email']").val();
-  data.message = $("#contactform textarea[name='message']").val();
+  var email = $("#contactform input[name='email']").val();
+  var message = $("#contactform textarea[name='message']").val();
 
-  $.post("/api/form/v0/forms/contact/entries", data, function (response) {
+  var newContactMessage = new Stamplay.Cobject('contact').Model;
+  newContactMessage.set('email', email);
+  newContactMessage.set('message', message);
+  newContactMessage.save().then(function () {
     window.location.href = "/index.html";
   });
+
 });
 
 
