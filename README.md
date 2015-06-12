@@ -32,7 +32,6 @@ Best of all, it has no server code it has barely some Javascript line. Prepare t
 HNclone is built around the following apis (components) of Stamplay
 
 * [Users](https://stamplay.com/docs#user)
-* Form
 * [Gamification](https://stamplay.com/docs#challenge)
 * [Custom Objects](https://stamplay.com/docs#customobject)
 * [Email](https://stamplay.com/docs#email)
@@ -54,7 +53,7 @@ Optional services :
 
 ## Configuring the components
 
-After creating a new app on [Stamplay](https://editor.stamplay.com) let's start by picking the component we want to use in our app that are: **User**, **Email**, **Gamification**, **Custom Objects** and **Form**.
+After creating a new app on [Stamplay](https://editor.stamplay.com) let's start by picking the component we want to use in our app that are: **User**, **Email**, **Gamification**, **Custom Objects**.
 
 Lets see one-by-one how they are configured:
 
@@ -69,10 +68,11 @@ now you have the data to configure Facebook Login on your app's user module. Go 
 ### Custom Object
 For our Hacker News clone we use this module to represent the **Post** that users can publish on Hacker news. Our posts will have a title, url, description and other two attributes as showed in the picture below. 
 
-After setting up this Stamplay will instantly expose Restful APIs for our newly created Post resource on the following endpoint ```https://APPID.stamplayapp.com/api/cobject/v0/post```
+After setting up this Stamplay will instantly expose Restful APIs for our newly created Post resource on the following endpoint ```https://APPID.stamplayapp.com/api/cobject/v1/post```
 
 ![Custom Object settings](https://blog.stamplay.com/wp-content/uploads/2014/07/Schermata-2014-07-22-alle-19.38.29.png)
 
+Moreover we'll use a ```contact``` custom object with email and message attributes as String.
 
 ### Gamification
 User activity on Hacker News is rewarded with Karma points, this component empower you to add gamification mechanics by defining challenges and achievements in your app. In this way we will be able to assign points to our users as soon as they post or comment new Posts on our Hacker News clone without having to write a single server side line of code.
@@ -80,13 +80,6 @@ User activity on Hacker News is rewarded with Karma points, this component empow
 Gamification's challenges can have one or more level that are unlocked when the user earns enough points. Every level has a graphic representation for both locked and unlocked state. Here we can see our one and only "superguru" level for the karma point challenge that user will unlock after they earn 900 points.
 
 ![Gamification settings](https://blog.stamplay.com/wp-content/uploads/2014/07/Schermata-2014-07-22-alle-19.49.13.png)
-
-
-### Form
-Form component is used to create a contact form to let our users reach out to us without leaving the app. Our contact form will have two fields, *email* and *message*.
-
-![Form settings](https://blog.stamplay.com/wp-content/uploads/2014/07/Schermata-2014-07-22-alle-20.14.38.png)
-
 
 ### Email
 This component doesn't need any setup, couldn't be easier than that ;)
