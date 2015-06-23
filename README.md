@@ -138,21 +138,21 @@ Action: Gamification - Add Points
 
 ###When a user fills the contact form, we receive an email with the form's content
 
-Trigger : Form - Submit
+Trigger : Cobject - Create
 
 Action: Email - Send Email
 
 **Form submit configuration**
 
-	Form: contact
+	Cobject: contact
 
 **Send Email configuration**
 
 	to: address@email.com
-	from: {{entry.data.email}}
+	from: {{coinstance.email}}
 	name: {{user.displayName}}
 	Subject: "New Message from Hacker News clone"
-	Body: {{entry.data.message}}
+	Body: {{coinstance.message}}
 
 
 ###When a new user signup, adds him on a Mailchimp list (optional)
