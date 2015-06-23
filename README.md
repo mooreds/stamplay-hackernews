@@ -142,7 +142,7 @@ Trigger : Cobject - Create
 
 Action: Email - Send Email
 
-**Form submit configuration**
+**Cobject create configuration**
 
 	Cobject: contact
 
