@@ -41,8 +41,8 @@ pre { overflow: auto; padding: 2px; max-width:600px; }
 pre:hover {overflow:auto}
 
 .votearrow {
-  width:      10px;
-  height:     10px;
+  width:      20px;
+  height:     12px;
   border:     0px;
   margin:     3px 2px 6px;
   background: url("../images/grayarrow2x.gif")
