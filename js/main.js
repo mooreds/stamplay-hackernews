@@ -1,3 +1,4 @@
+Stamplay.init('hackernews');
 var tags = new Stamplay.Cobject('post').Collection;
 var user = new Stamplay.User().Model;
 
@@ -6,11 +7,7 @@ $(document).ready(function () {
 
   $('#login').on('click', function (e) {
     e.preventDefault();
-    user.login('facebook').then(function () {
-      return user.currentUser()
-    }).then(function () {
-      window.location.href = '/';
-    });
+    user.login('facebook');
   });
 
   $('#logout').on('click', function (e) {
