@@ -102,8 +102,8 @@
                 </span>
                 <br>
                 <br>
-                <form method="get" action="/search">
-                  Search: <input type="text" name="title" value="" placeholder="search by post title" size="25">                
+                 <form id="search-form">
+                  <input class="typeahead" id="post-search" type="text" name="title" value="" placeholder="search by post title" size="25" spellcheck="false">                
                 </form>
                 <br></center>
             </td>
@@ -112,14 +112,13 @@
     </table>
   </center>
   
-  <script>
-    var _APP_ID = "hackernews";
-    var _ASSETS_URL = "";
-  </script>  
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-  <script src="https://drrjhlchpvi7e.cloudfront.net/libs/stamplay-js-sdk/1.0.0/stamplay.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="https://drrjhlchpvi7e.cloudfront.net/libs/stamplay-js-sdk/1.2.8/stamplay.min.js"></script>
+  <script src="//cdn.jsdelivr.net/typeahead.js/0.10.5/typeahead.jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
 	<script src="./js/utils.js"></script>
   <script src="./js/main.js"></script>
+
 	</body>
 
 </html>
