@@ -22,7 +22,6 @@ Utils.getHostname = function (url) {
 
 //returns the hostname only for a given URL
 Utils.renderTemplate = function (template, viewData, selector) {
-
 	$.Mustache.load('./templates.html')
     .done(function () {
         $(selector).mustache(template, viewData);
