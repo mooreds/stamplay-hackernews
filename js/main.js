@@ -252,15 +252,16 @@ function getPostDetail() {
 /*     RENDER POST LIST     */
 /****************************/
 function getSortedPostList(posts, sort) {
-  posts.instance = [];
-  return posts.fetch(sort).then(function () {
+  
+  posts.fetch(sort).then(function () {
+    var viewDataArray = [];
     
     $('#newstable').html('');
     posts.instance.forEach(function (post, count) {
       
       var viewData = {        
         id: post.get('_id'),
-        count : count,
+        count : count+1,
         url: post.get('url'),
         shortUrl: Utils.getHostname(post.get('url')),
         title: post.get('title'),
@@ -268,9 +269,10 @@ function getSortedPostList(posts, sort) {
         commentLength: post.get('actions').comments.length,
         votesLength: post.get('actions').votes.users_upvote.length
       }
-
-      Utils.renderTemplate('list-elem', viewData, '#newstable');
-
+      viewDataArray.push(viewData)
+    
     });
+    Utils.renderTemplate('list-elem', viewDataArray, '#newstable');
+
   })
 }
