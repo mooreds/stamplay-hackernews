@@ -41,6 +41,10 @@ $(document).ready(function () {
     user.logout();
   })
   
+
+  /****************************/
+  /*      USER PWD RESET      */
+  /****************************/
   $('#reset-pw').on('click', function (e) {
     e.preventDefault();
     user.resetPassword('giuliano.iacobelli@gmail.com','1111').then(function(){
@@ -48,7 +52,10 @@ $(document).ready(function () {
     })
   })
 
-  /* Checking if the user is logged */
+
+  /****************************/
+  /* INIT NAVBAR W/ USER INFO */
+  /****************************/
   user.currentUser()
     .then(function () {
       var userId = user.get('_id');
@@ -207,6 +214,10 @@ $(document).ready(function () {
 });
 
 
+
+/****************************/
+/*   GET SINGLE POST INFO   */
+/****************************/
 function getPostDetail() {
   var postId = Utils.getParameterByName("id");
   var post = new Stamplay.Cobject('post').Model;
@@ -237,6 +248,9 @@ function getPostDetail() {
 }
 
 
+/****************************/
+/*     RENDER POST LIST     */
+/****************************/
 function getSortedPostList(posts, sort) {
   posts.instance = [];
   return posts.fetch(sort).then(function () {
