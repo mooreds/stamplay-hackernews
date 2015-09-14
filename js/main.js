@@ -95,9 +95,15 @@ $(document).ready(function () {
   /****************************/
   /*      RENDER CONTENT      */
   /****************************/
+  
+  var page_param = (Utils.getParameterByName('page') === "") ?  1 : Utils.getParameterByName('page');
+
   var queryParam = {
-    sort: '-actions.votes.total'
+    sort: '-actions.votes.total',
+    per_page: 30,
+    page: 1,
   };
+
 
   if (window.location.href.indexOf("item") > -1) {
     getPostDetail();
@@ -135,7 +141,7 @@ $(document).ready(function () {
 
 
   /****************************/
-  /* UPVOTE AND COMMENT POST  */
+  /* UPVOTE AND COMMENT POSTS */
   /****************************/
   $('body').on('click', 'a.voteelem', function (e) {
     e.preventDefault();
@@ -251,9 +257,9 @@ function getPostDetail() {
 /****************************/
 /*     RENDER POST LIST     */
 /****************************/
-function getSortedPostList(posts, sort) {
+function getSortedPostList(posts, queryParam) {
   
-  posts.fetch(sort).then(function () {
+  posts.fetch(queryParam).then(function () {
     var viewDataArray = [];
     
     $('#newstable').html('');
