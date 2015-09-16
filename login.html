@@ -1,0 +1,81 @@
+<html>
+<head>
+	<title></title>
+	<style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
+.en-markup-crop-options {
+    top: 18px !important;
+    left: 50% !important;
+    margin-left: -100px !important;
+    width: 200px !important;
+    border: 2px rgba(255,255,255,.38) solid !important;
+    border-radius: 4px !important;
+}
+
+.en-markup-crop-options div div:first-of-type {
+    margin-left: 0px !important;
+}
+</style>
+</head>
+<body bgcolor="#ffffff" alink="#0000be"> <b>Login</b>
+	<br>
+	<br>
+	<form id="loginform" method="post" action="login">
+		<input type="hidden" name="goto" value="news">
+		<table border="0">
+			<tbody>
+				<tr>
+					<td>username:</td>
+					<td>
+						<input type="text" name="acct" size="20" id="username" autocorrect="off" autocapitalize="off"></td>
+				</tr>
+				<tr>
+					<td>password:</td>
+					<td>
+						<input type="password" name="pw" id="password" size="20"></td>
+				</tr>
+			</tbody>
+		</table>
+		<br>
+		<input type="submit" value="login"></form>
+	<a id="reset-pw" href="forgot?id=">Forgot your password?</a>
+	<br>
+	<br> <b>Create Account</b>
+	<br>
+	<br>
+	<form id="signupform" method="post" action="login">
+		<input type="hidden" name="goto" value="news">
+		<input type="hidden" name="creating" value="t">
+		<table border="0">
+			<tbody>
+				<tr>
+					<td>username:</td>
+					<td>
+						<input type="text" name="acct" size="20" autocorrect="off" autocapitalize="off"></td>
+				</tr>
+				<tr>
+					<td>password:</td>
+					<td>
+						<input type="password" name="pw" size="20"></td>
+				</tr>
+			</tbody>
+		</table>
+		<br>
+		<input type="submit" value="create account"></form>
+	<script type="text/javascript">(function () {
+        return window.SIG_EXT = {};
+      })()</script>
+	<span id="buffer-extension-hover-button" style="display: none;position: absolute;z-index: 8675309;width: 100px;height: 25px;background-image: url(chrome-extension://noojglkidnpfjbincgijbaiedldjfbhh/data/shared/img/buffer-hover-icon@2x.png);background-size: 100px 25px;opacity: 0.9;cursor: pointer;"></span>
+
+	<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="/bower_components/jquery-Mustache/jquery.mustache.js"></script>
+  <script src="/bower_components/mustache.js/mustache.js"></script>
+
+  <script src="/bower_components/stamplay-js-sdk/dist/stamplay.min.js"></script>
+  <script src="//cdn.jsdelivr.net/typeahead.js/0.10.5/typeahead.jquery.min.js"></script>
+  <script src="/bower_components/algoliasearch/dist/algoliasearch.min.js"></script>
+
+  <script src="./js/utils.js"></script>
+  <script src="./js/main.js"></script>
+
+</body>
+</html>
