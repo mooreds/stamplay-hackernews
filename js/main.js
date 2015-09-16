@@ -29,9 +29,9 @@ $(document).ready(function () {
     };
 
     user.signup(registrationData).then(function(){
-      window.location.href = "/index.html";        
+      window.location.href = "/index.html";
     }).then(function(){
-      // Something went wrong        
+      // Something went wrong
       console.log("something went wrong!");
     })
   });
@@ -40,7 +40,7 @@ $(document).ready(function () {
     e.preventDefault();
     user.logout();
   })
-  
+
 
   /****************************/
   /*      USER PWD RESET      */
@@ -72,7 +72,7 @@ $(document).ready(function () {
         /* Show logout button*/
         $('#logout-btn').show();
         /* Retrieving the user's points */
-        
+
         $.ajax({
           method: 'GET',
           url: '/api/gm/v0/challenges/hnkarma/userchallenges/' + userId,
@@ -95,7 +95,7 @@ $(document).ready(function () {
   /****************************/
   /*      RENDER CONTENT      */
   /****************************/
-  
+
   var page_param = (Utils.getParameterByName('page') === "") ?  1 : Utils.getParameterByName('page');
 
   var queryParam = {
@@ -116,6 +116,12 @@ $(document).ready(function () {
 
   getSortedPostList(posts, queryParam);
   $('#newest').css('font-weight', 'none');
+
+  $("#morenews").on("click", function(event) {
+      event.preventDefault();
+      queryParam.page += 1;
+      getSortedPostList(posts, queryParam);
+  })
 
 
   /****************************/
@@ -207,8 +213,8 @@ $(document).ready(function () {
         '</div>';
       }
     }
-  }).on('typeahead:selected', function (e, obj) {    
-    $('#post-search').data('objectID', obj.objectID);    
+  }).on('typeahead:selected', function (e, obj) {
+    $('#post-search').data('objectID', obj.objectID);
     console.log($('#post-search').data('objectID'))
   });
 
@@ -228,13 +234,13 @@ function getPostDetail() {
   var postId = Utils.getParameterByName("id");
   var post = new Stamplay.Cobject('post').Model;
   post.fetch(postId).then(function () {
-    
+
     var viewData = {
       id : post.get('_id'),
       url : post.get('url'),
       shortUrl : Utils.getHostname(post.get('url')),
       title : post.get('title'),
-      dt_create : Utils.formatDate(post.get('dt_create')),    
+      dt_create : Utils.formatDate(post.get('dt_create')),
       votesLength : post.get('actions').votes.users_upvote.length
     }
     Utils.renderTemplate('post-detail', viewData, '#postcontent');
@@ -258,14 +264,14 @@ function getPostDetail() {
 /*     RENDER POST LIST     */
 /****************************/
 function getSortedPostList(posts, queryParam) {
-  
+
   posts.fetch(queryParam).then(function () {
     var viewDataArray = [];
-    
+
     $('#newstable').html('');
     posts.instance.forEach(function (post, count) {
-      
-      var viewData = {        
+
+      var viewData = {
         id: post.get('_id'),
         count : count+1,
         url: post.get('url'),
@@ -276,7 +282,7 @@ function getSortedPostList(posts, queryParam) {
         votesLength: post.get('actions').votes.users_upvote.length
       }
       viewDataArray.push(viewData)
-    
+
     });
     Utils.renderTemplate('list-elem', viewDataArray, '#newstable');
 
