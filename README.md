@@ -5,16 +5,14 @@ stamplay-hackernews
 
 *Hacker News is a popular social news website focusing on computer science and entrepreneurship. If you’re hacker or work in the startup space, you’ve almost certainly heard of it and perhaps even contribute to it!*
 
-In this project we’ll build a simple version of Hacker News. We haven’t included upvotes or comments but it’s a great starting point if you want to build your own HN.
 
-In just 30 minutes you’ll learn the basics of Stamplay, including how to:
+In this tutorial we’ll show you how to glue together Stamplay, Algolia, and Mailgun APIs to build a clone of Hacker News. The app will feature the following functionalities:
 
-* register users with Facebook
-* create and manage a database, using Objects
-* create and configure Tasks
-* add game mechanics
-* send transactional messages (IE Welcome message)
-* integrate an third party API (MailChimp)
+* users can signup and login with email and password
+* users can submit posts and earn karma points for that
+* users can upvote and comment on posts
+* posts will be indexed in Algolia and users will have typeahead
+* search users will receive a welcome email after they signup using the Mailgun API
 * use Stamplay web hosting
 
 [Here’s what you’ll build](https://hackernews.stamplayapp.com/) – all in less than 30 minutes (the user record is 19 minutes). Awesome!
