@@ -18,3 +18,5 @@ In this tutorial we’ll show you how to glue together Stamplay, Algolia, and Ma
 [Here’s what you’ll build](https://hnewsv2.stamplayapp.com/) – all in less than 30 minutes (the user record is 19 minutes). Awesome!
 
 ![picture alt](https://blog.stamplay.com/wp-content/uploads/2014/07/Stamplay-Hacker-News-Side-By-Side.jpg "To the left, the original Hacker News. To the right, Stamplay’s version.")
+
+[Read the entire guide](http://stackshare.io/stamplay/building-a-hacker-news-clone-without-writing-any-backend-code) 
