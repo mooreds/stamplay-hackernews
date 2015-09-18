@@ -1,7 +1,7 @@
 stamplay-hackernews
 ===================
 
-**This project is built on the [Stamplay](https://stamplay.com) platform with few lines of [jQuery](http://jquery.com) to show you how to build your own clone of [Hacker News](https://news.ycombinator.com/) in just 30 minutes.**
+**This project is built on the [Stamplay](https://stamplay.com) platform to show you how to build your own clone of [Hacker News](https://news.ycombinator.com/) in just 30 minutes.**
 
 *Hacker News is a popular social news website focusing on computer science and entrepreneurship. If you’re hacker or work in the startup space, you’ve almost certainly heard of it and perhaps even contribute to it!*
 
@@ -15,8 +15,6 @@ In this tutorial we’ll show you how to glue together Stamplay, Algolia, and Ma
 * search users will receive a welcome email after they signup using the Mailgun API
 * use Stamplay web hosting
 
-[Here’s what you’ll build](https://hackernews.stamplayapp.com/) – all in less than 30 minutes (the user record is 19 minutes). Awesome!
+[Here’s what you’ll build](https://hnewsv2.stamplayapp.com/) – all in less than 30 minutes (the user record is 19 minutes). Awesome!
 
 ![picture alt](https://blog.stamplay.com/wp-content/uploads/2014/07/Stamplay-Hacker-News-Side-By-Side.jpg "To the left, the original Hacker News. To the right, Stamplay’s version.")
-
-###[Click here to read the full tutorial](https://blog.stamplay.com/how-to-build-an-hacker-news-clone-in-30-minutes-with-stamplay/)###
