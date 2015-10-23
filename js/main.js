@@ -1,4 +1,4 @@
-Stamplay.init('hnewsv2');
+Stamplay.init('mamabearnews');
 var posts = new Stamplay.Cobject('post').Collection;
 var user = new Stamplay.User().Model;
 
